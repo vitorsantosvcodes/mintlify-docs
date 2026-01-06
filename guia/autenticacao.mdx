@@ -1,0 +1,24 @@
+---
+title: "Autenticação"
+description: "Veja como se autenticar em nossa API."
+---
+
+## Como é feita a autenticação na API?
+
+A autenticação em nossa API é realizada por meio de um **token fixo**. Esse token identifica a sua conta e garante a comunicação segura com nossos serviços.
+
+Para obter seu token de autenticação, entre em contato com o suporte.
+
+### Utilize o token nas requisições
+
+Inclua o token no header de todas as suas chamadas para a API:
+
+```json
+"Content-Type": "application/json",
+"Authorization": "Bearer seu_token"
+```
+
+<Warning>
+  Guarde seu token com segurança. Não compartilhe com terceiros e evite expô-lo
+  no código fonte ou em logs.
+</Warning>

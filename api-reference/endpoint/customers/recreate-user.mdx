@@ -1,0 +1,101 @@
+---
+title: "Recriar Usuário"
+sidebarTitle: "Recriar Usuário"
+api: "PATCH https://mcapi.knewcms.com:2087/lines/recreate/{id}"
+authMethod: "authorization"
+description: "Este endpoint permite recriar um usuário alterando sua senha na plataforma."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint permite **recriar um usuário** alterando sua senha atual para uma nova senha.
+
+### Headers obrigatórios
+
+<ParamField
+  header="Authorization"
+  type="string"
+  placeholder="Bearer {token}"
+  required
+>
+  O token de autenticação no formato Bearer é obrigatório para acessar este
+  endpoint.
+</ParamField>
+
+### Parâmetros da URL
+
+<ParamField path="id" type="string" placeholder="1201" required>
+  ID do usuário a ser recriado. Esse parâmetro deve ser informado diretamente na URL.
+</ParamField>
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="password" type="string" placeholder="senha_atual_123" required>
+  Senha atual do usuário. Campo obrigatório.
+</ParamField>
+
+
+### Exemplo de Requisição
+
+```json
+PATCH https://mcapi.knewcms.com:2087/lines/recreate/1201
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+  "password": "senha_atual_123",
+  "newPassword": "nova_senha_456"
+}
+```
+
+### Resposta
+
+<ResponseField name="status" type="number">
+  Indica o código HTTP da resposta. Esperado: 200 (OK).
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Mensagem de confirmação da operação.
+</ResponseField>
+
+<ResponseField name="response" type="object">
+Conteúdo da resposta.
+
+<Expandable title="Mostrar objeto">
+<ResponseField name="id" type="number">
+  Identificador único do usuário recriado.
+</ResponseField>
+
+<ResponseField name="username" type="string">
+  Nome de usuário do cliente.
+</ResponseField>
+
+<ResponseField name="password" type="string">
+  Nova senha atribuída ao usuário.
+</ResponseField>
+
+<ResponseField name="updatedAt" type="string">
+  Data e hora da última atualização do usuário.
+</ResponseField>
+</Expandable>
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+  "status": 200,
+  "message": "Usuário recriado com sucesso",
+  "response": {
+    "id": 1201,
+    "username": "usuario_exemplo",
+    "password": "nova_senha_456",
+    "updatedAt": "2025-01-22T10:30:00.000Z"
+  }
+}
+```
+</ResponseExample>

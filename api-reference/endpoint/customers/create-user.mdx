@@ -1,0 +1,598 @@
+---
+title: "Criar usuário"
+sidebarTitle: "Criar usuário"
+api: "POST https://mcapi.knewcms.com:2087/lines"
+authMethod: "authorization"
+description: "Este endpoint permite gerar um cliente na plataforma ."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint cria um **usuário ativado** para uso da plataforma.
+
+### Planos Disponíveis
+
+Os seguintes planos estão disponíveis para atribuição aos usuários:
+
+| ID | Nome do Plano |
+|:---|:--------------|
+| `5` | Premium 1 IPTV + 2 Nexus |
+| `10` | Whot |
+| `11` | Ultra 1 Krator+ |
+| `2` | Essencial 2 IPTV + 1 P2P |
+
+### Headers obrigatórios
+
+<ParamField
+  header="Authorization"
+  type="string"
+  placeholder="Bearer {token}"
+  required
+>
+  O token de autenticação no formato Bearer é obrigatório para acessar este
+  endpoint.
+</ParamField>
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="username" type="string" placeholder="usuario_exemplo" required>
+  Nome de usuário para login na plataforma. Campo obrigatório.
+</ParamField>
+
+<ParamField body="password" type="string" placeholder="123456" required>
+  Senha de acesso do usuário. Campo obrigatório.
+</ParamField>
+
+<ParamField body="credits" type="number" placeholder="1" required>
+  Número de créditos a serem atribuídos ao usuário. Campo obrigatório.
+</ParamField>
+
+<ParamField body="planId" type="number" placeholder="5" required>
+  ID do plano a ser atribuído ao usuário. Campo obrigatório.
+
+  **Planos disponíveis:**
+  - `2` - Essencial 2 IPTV + 1 P2P
+  - `5` - Premium 1 IPTV + 2 Nexus
+  - `10` - Whot
+  - `11` - Ultra 1 Krator+
+</ParamField>
+
+<ParamField body="country" type="string" placeholder="Brasil" required>
+  País de origem do usuário. Campo obrigatório.
+</ParamField>
+
+<ParamField body="isTrial" type="number" placeholder="0" required>
+  Indica se a conta é de teste. Use 0 para conta cliente ou 1 para conta trial. Campo obrigatório.
+</ParamField>
+
+<ParamField body="email" type="string" placeholder="user@dominio.com">
+  Endereço de e-mail do usuário. Campo opcional.
+</ParamField>
+
+<ParamField body="whatsapp" type="string" placeholder="+5511999999999">
+  Número do WhatsApp do usuário. Campo opcional.
+</ParamField>
+
+<ParamField body="telegram" type="string" placeholder="@usuario">
+  Username do Telegram do usuário. Campo opcional.
+</ParamField>
+
+<ParamField body="notes" type="string" placeholder="Observações">
+  Observações adicionais sobre o cliente. Campo opcional.
+</ParamField>
+
+<ParamField body="package_p2p" type="string" required>
+  ID do pacote P2P a ser atribuído ao usuário. Pode ser enviado como string ou número. Campo obrigatório.
+
+  <Accordion title="📦 Pacotes Disponíveis" defaultOpen>
+
+  ### Formato de Envio
+
+  ```json
+  "package_p2p": "64399dca5ea59e8a1de2b083"
+  ```
+  ou
+  ```json
+  "package_p2p": 64399dca5ea59e8a1de2b083
+  ```
+
+  ### Pacotes por Região
+
+  <AccordionGroup>
+
+  <Accordion title="🇧🇷 Brasil">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `64399dca5ea59e8a1de2b083` | 🇧🇷 **1. Brasil** |
+  | `646d1492db22a7b1bc518941` | 🇧🇷 **2. Brasil (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇵🇹 Portugal">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `64399ddfc8f60489be2e8fc5` | 🇵🇹 **3. Portugal** |
+  | `646d14bc06e850b151d4675e` | 🇵🇹 **4. Portugal (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇺🇾 Uruguai">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `64399df0871a4e89f97b8d81` | 🇺🇾 **5. Uruguai** |
+  | `646d14d85c2df2b15f760cd0` | 🇺🇾 **6. Uruguai (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇩🇴 República Dominicana">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `64399dfde006f08959c23d8b` | 🇩🇴 **7. República Dominicana** |
+  | `646d1539621370b23498049d` | 🇩🇴 **8. República Dominicana (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇦🇷 Argentina">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `646d2b7b15c9b7b11598baef` | 🇦🇷 **9. Argentina** |
+  | `646d1561529e92b20a646458` | 🇦🇷 **10. Argentina (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇻🇪 Venezuela">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `6462a77d75d585b1541c8bdf` | 🇻🇪 **11. Venezuela** |
+  | `646d1551200bf0b16dba50d3` | 🇻🇪 **12. Venezuela (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇨🇴 Colômbia">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `646d2e2d9f6176b1d5674101` | 🇨🇴 **13. Colômbia** |
+  | `64810270c89ed6a620de78fe` | 🇨🇴 **14. Colômbia (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇵🇾 Paraguai">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `6480cee6556b165b7f3f7670` | 🇵🇾 **15. Paraguai** |
+  | `6480e279c03bd7a57debca30` | 🇵🇾 **16. Paraguai (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇵🇪 Peru">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `647fc3ce3537090f240bc36b` | 🇵🇪 **17. Peru** |
+  | `6480dd39aad4065c2030c726` | 🇵🇪 **18. Peru (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇲🇽 México">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `646d2e0615c9b7b11598baf0` | 🇲🇽 **19. México** |
+  | `648102b26e5c04a5b4bdae06` | 🇲🇽 **20. México (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇪🇸 Espanha">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `646d2dd8c89a82b2081d51fe` | 🇪🇸 **21. Espanha** |
+  | `648102cc21c828a59049927b` | 🇪🇸 **22. Espanha (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇺🇸 Estados Unidos">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `646d2ce9d6c8ecb174517ec6` | 🇺🇸 **23. Estados Unidos** |
+  | `646d156d200bf0b16dba50d4` | 🇺🇸 **24. Estados Unidos (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🌎 Pacotes Especiais">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `667a0f479ab1ca5452bf15ad` | **25. Pacote Completo** |
+  | `5da17892133a1d61888029aa` | **26. Pacote Completo (+18)** |
+  | `64681d659455040ee6ff4c52` | **27. Câmeras (Play Store)** |
+  | `64b9ce3689aaac1f86acb99b` | **28. Vazio** |
+
+  </Accordion>
+
+  </AccordionGroup>
+
+  </Accordion>
+</ParamField>
+
+<ParamField body="krator_package" type="string" placeholder="1" required>
+  ID do pacote Krator a ser atribuído ao usuário. Deve ser enviado como string. Campo obrigatório.
+
+  <Accordion title="🎮 Pacotes Krator Disponíveis" defaultOpen>
+
+  ### Formato de Envio
+
+  ```json
+  "krator_package": "1"
+  ```
+
+  ### Pacote Disponível
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `1` | 🎮 **Pacote Completo** |
+
+  </Accordion>
+</ParamField>
+
+<ParamField body="nexus_package" type="number" placeholder="1" required>
+  ID do pacote Nexus a ser atribuído ao usuário. Deve ser enviado como número. Campo obrigatório.
+
+  <Accordion title="🌟 Pacotes Nexus Disponíveis" defaultOpen>
+
+  ### Formato de Envio
+
+  ```json
+  "nexus_package": 1
+  ```
+
+  ### Pacote Disponível
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `1` | 🌟 **Pacote Completo** |
+
+  </Accordion>
+</ParamField>
+
+<ParamField body="addons" type="number[]" placeholder="[12, 9]">
+  Lista de IDs dos adicionais a serem atribuídos ao usuário. Deve ser enviado como array de números simples.
+
+  <Accordion title="➕ Adicionais Disponíveis" defaultOpen>
+
+  ### Formato de Envio
+
+  Envie apenas os IDs como números em um array:
+
+  ```json
+  "addons": [12, 9]
+  ```
+
+  **Importante:** Não envie como array de objetos. Use apenas os números dos IDs.
+
+  ❌ **Formato incorreto:**
+  ```json
+  "addons": [{"id": 12}, {"id": 9}]
+  ```
+
+  ✅ **Formato correto:**
+  ```json
+  "addons": [12, 9]
+  ```
+
+  ### Adicionais Disponíveis
+
+  | ID | Nome do Adicional |
+  |:---|:------------------|
+  | `12` | 🎮 **Krator** |
+  | `7` | 🌟 **Nexus** |
+  | `8` | 📺 **IPTV e P2P** |
+  | `9` | 📱 **Whot** |
+
+  </Accordion>
+</ParamField>
+
+<ParamField body="acess" type="number" placeholder="1">
+  Quantidade de telas/acessos simultâneos permitidos para o usuário IPTV. Campo opcional.
+</ParamField>
+
+<ParamField body="package_iptv" type="number" required>
+  ID do pacote IPTV a ser atribuído ao usuário. Deve ser enviado como número. Campo obrigatório.
+
+  <Accordion title="📺 Pacotes IPTV Disponíveis" defaultOpen>
+
+  ### Formato de Envio
+
+  ```json
+  "package_iptv": 30
+  ```
+
+  ### Pacotes por Região
+
+  <AccordionGroup>
+
+  <Accordion title="🇧🇷 Brasil">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `30` | 🇧🇷 **1. Brasil** |
+  | `70` | 🇧🇷 **2. Brasil (+18)** |
+  | `101` | 🇧🇷 **101. Brasil s/ 4K** |
+  | `102` | 🇧🇷 **102. Brasil s/ 4K (+18)** |
+  | `104` | 🇧🇷 **103. Brasil s/ Cinema** |
+  | `105` | 🇧🇷 **104. Brasil s/ Cinema (+18)** |
+  | `108` | 🇧🇷 **996. Brasil (s/ jogos e s/ adultos)** |
+  | `97` | 🇧🇷 **29. Brasil + Canais Inter** |
+  | `96` | 🇧🇷 **30. Brasil + Canais Inter (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇵🇹 Portugal">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `98` | 🇵🇹 **33. Portugal** |
+  | `99` | 🇵🇹 **34. Portugal (+18)** |
+  | `33` | 🇵🇹 **3. Portugal + Brasil** |
+  | `84` | 🇵🇹 **4. Portugal + Brasil (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇺🇾 Uruguai">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `48` | 🇺🇾 **5. Uruguai** |
+  | `73` | 🇺🇾 **6. Uruguai (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇩🇴 República Dominicana">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `36` | 🇩🇴 **7. República Dominicana** |
+  | `78` | 🇩🇴 **8. República Dominicana (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇦🇷 Argentina">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `42` | 🇦🇷 **9. Argentina** |
+  | `79` | 🇦🇷 **10. Argentina (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇻🇪 Venezuela">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `53` | 🇻🇪 **11. Venezuela** |
+  | `75` | 🇻🇪 **12. Venezuela (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇨🇴 Colômbia">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `56` | 🇨🇴 **13. Colômbia** |
+  | `81` | 🇨🇴 **14. Colômbia (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇧🇴 Bolívia">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `106` | 🇧🇴 **15. Bolivia** |
+  | `107` | 🇧🇴 **16. Bolivia (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇵🇾 Paraguai">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `47` | 🇵🇾 **17. Paraguai** |
+  | `77` | 🇵🇾 **18. Paraguai (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇵🇪 Peru">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `92` | 🇵🇪 **19. Peru** |
+  | `93` | 🇵🇪 **20. Peru (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇲🇽 México">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `41` | 🇲🇽 **21. México** |
+  | `76` | 🇲🇽 **22. México (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇪🇸 Espanha">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `62` | 🇪🇸 **23. Espanha** |
+  | `80` | 🇪🇸 **24. Espanha (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇺🇸 Estados Unidos">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `65` | 🇺🇸 **25. Estados Unidos** |
+  | `83` | 🇺🇸 **26. Estados Unidos (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🇨🇺 Cuba">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `87` | 🇨🇺 **27. Cuba** |
+  | `94` | 🇨🇺 **28. Cuba (+18)** |
+
+  </Accordion>
+
+  <Accordion title="🌎 Pacotes Regionais">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `68` | 🌎 **31. Latinos** |
+  | `74` | 🌎 **32. Latinos (+18)** |
+  | `109` | 🌍 **Internacional - Reestream** |
+
+  </Accordion>
+
+  <Accordion title="📦 Pacotes Especiais">
+
+  | ID | Nome do Pacote |
+  |:---|:---------------|
+  | `69` | ⭐ **99. Completo** |
+  | `95` | ⭐ **100. Completo (+18)** |
+  | `111` | 💡 **1001. Lite** |
+  | `71` | 📹 **999. Câmeras (Play Store)** |
+  | `103` | 📭 **1000. Sem Conteúdo** |
+
+  </Accordion>
+
+  </AccordionGroup>
+
+  </Accordion>
+</ParamField>
+
+### Exemplo de Requisição
+
+```json
+POST https://mcapi.knewcms.com:2087/lines/test
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+    "isTrial": 0,
+    "username": "usuario_exemplo",
+    "password": "123456",
+    "whatsapp": "xxxxx",
+    "telegram": "xxxx",
+    "country": "Brasil",
+    "notes": "xxxx",
+    "credits": 1,
+    "planId": 5,
+    "email": "user@dominio.com",
+    "package_p2p": "64399dca5ea59e8a1de2b083",
+    "package_iptv": 30,
+    "krator_package": 1,
+    "nexus_package": 1,
+    "addons": [12, 9, 7],
+    "acess": 1
+}
+```
+
+### Resposta
+
+<ResponseField name="status" type="number">
+  Indica o código HTTP da resposta. Esperado: 201 (Created).
+</ResponseField>
+
+<ResponseField name="code" type="string">
+  O código de status da resposta.
+</ResponseField>
+
+<ResponseField name="response" type="object">
+Conteúdo da resposta.
+
+<Expandable title="Mostrar objeto">
+<ResponseField name="id" type="number">
+  Identificador único do cliente teste gerado.
+</ResponseField>
+
+<ResponseField name="username" type="string">
+  Nome de usuário gerado para o cliente.
+</ResponseField>
+
+<ResponseField name="password" type="string">
+  Senha temporária gerada para o cliente.
+</ResponseField>
+
+<ResponseField name="owner" type="number">
+  ID do proprietário responsável pelo cliente.
+</ResponseField>
+
+<ResponseField name="expDate" type="string">
+  Data de expiração do acesso do cliente teste.
+</ResponseField>
+
+<ResponseField name="notes" type="string">
+  Observações adicionais sobre o cliente teste.
+</ResponseField>
+
+<ResponseField name="status" type="number">
+  Status da conta (ex.: 1 para ativo, 0 para inativo).
+</ResponseField>
+
+<ResponseField name="isTrial" type="number">
+  Indica se a conta é de teste (1 para sim, 0 para não).
+</ResponseField>
+
+<ResponseField name="country" type="string">
+  País de origem do cliente teste.
+</ResponseField>
+
+<ResponseField name="createdAt" type="string">
+  Data de criação do cliente teste.
+</ResponseField>
+
+<ResponseField name="updatedAt" type="string">
+  Data da última atualização do cliente teste.
+</ResponseField>
+</Expandable>
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+  "id": 1201,
+  "username": "cliente_teste01",
+  "password": "senha1234",
+  "owner": 45,
+  "expDate": "2025-01-18T15:00:00.000Z",
+  "notes": "Conta de avaliação",
+  "status": 1,
+  "isTrial": 1,
+  "country": "Brazil",
+  "createdAt": "2025-01-16T13:00:00.000Z",
+  "updatedAt": "2025-01-16T13:00:00.000Z",
+  "whatsapp": null,
+  "telegram": null,
+  "migrationUrl": null,
+  "trash": 0,
+  "updated": 0
+}
+```
+</ResponseExample>

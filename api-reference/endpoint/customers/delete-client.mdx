@@ -1,0 +1,60 @@
+---
+title: "Deletar Cliente"
+sidebarTitle: "Deletar Cliente"
+api: "DELETE https://mcapi.knewcms.com:2087/lines/{id}"
+authMethod: "authorization"
+description: "Este endpoint permite deletar um cliente da plataforma ."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint remove um cliente da plataforma  de forma definitiva.
+
+### Headers obrigatórios
+
+<ParamField
+  header="Authorization"
+  type="string"
+  placeholder="Bearer {token}"
+  required
+>
+  O token de autenticação no formato Bearer é obrigatório para acessar este endpoint.
+</ParamField>
+
+### Parâmetros da URL
+
+<ParamField path="id" type="string" placeholder="505" required>
+  ID do cliente a ser deletado. Esse parâmetro deve ser informado diretamente na URL.
+</ParamField>
+
+### Exemplo de Requisição
+
+```json
+DELETE https://mcapi.knewcms.com:2087/lines/505
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+```
+
+### Resposta
+
+<ResponseField name="status" type="number">
+  Indica o código HTTP da resposta. Esperado: 200 (OK) ou 204 (No Content).
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Mensagem de confirmação da exclusão.
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+  "status": 200,
+  "message": "Cliente deletado com sucesso."
+}
+```
+</ResponseExample>

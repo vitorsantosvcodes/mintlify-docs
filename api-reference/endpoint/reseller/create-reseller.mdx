@@ -1,0 +1,169 @@
+---
+title: "Criar Revendedor"
+sidebarTitle: "Criar Revendedor"
+api: "POST https://mcapi.knewcms.com:2087/users"
+authMethod: "authorization"
+description: "Este endpoint permite criar um novo revendedor na plataforma ."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint permite criar um novo revendedor, definindo suas permissões e dados de acesso.
+
+### Headers obrigatórios
+
+<ParamField
+  header="Authorization"
+  type="string"
+  placeholder="Bearer {token}"
+  required
+>
+  O token de autenticação no formato Bearer é obrigatório para acessar este endpoint.
+</ParamField>
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="username" type="string" placeholder="" required>
+  Nome de usuário do revendedor.
+</ParamField>
+
+<ParamField body="password" type="string" placeholder="" required>
+  Senha do revendedor.
+</ParamField>
+
+<ParamField body="is_master" type="number" placeholder="1" required>
+  Define se o revendedor será master (**1**) ou não (**0**).
+</ParamField>
+
+<ParamField body="credits" type="string" placeholder="12312" required>
+  Quantidade de créditos disponíveis para o revendedor.
+</ParamField>
+
+<ParamField body="whatsapp" type="string" placeholder="12312312312">
+  Número de WhatsApp do revendedor. Campo opcional.
+</ParamField>
+
+<ParamField body="telegram" type="string" placeholder="zeca">
+  Usuário do Telegram do revendedor. Campo opcional.
+</ParamField>
+
+<ParamField body="language" type="string" placeholder="pt">
+  Idioma do revendedor (ex.: **pt**, **en**).
+</ParamField>
+
+<ParamField body="country" type="string" placeholder="Brasil" required>
+  País de origem do revendedor.
+</ParamField>
+
+<ParamField body="email" type="string" placeholder="teste@gmail.com">
+  E-mail do revendedor. Campo opcional.
+</ParamField>
+
+<ParamField body="notes" type="string" placeholder="Observações">
+  Observações adicionais. Campo opcional.
+</ParamField>
+
+### Exemplo de Requisição
+
+```json
+POST https://mcapi.knewcms.com:2087/users
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+  "username": "username-definido",
+  "password": "password-definido",
+  "is_master": 1,
+  "credits": "12312",
+  "whatsapp": "12312312312",
+  "telegram": "zeca",
+  "language": "pt",
+  "country": "Brasil",
+  "email": "teste@gmail.com",
+  "notes": ""
+}
+```
+
+### Resposta
+
+<ResponseField name="status" type="number">
+  Indica o código HTTP da resposta. Esperado: 201 (Created).
+</ResponseField>
+
+<ResponseField name="response" type="object">
+Conteúdo da resposta.
+
+<Expandable title="Mostrar objeto">
+<ResponseField name="id" type="number">
+  Identificador único do revendedor.
+</ResponseField>
+
+<ResponseField name="username" type="string">
+  Nome de usuário do revendedor.
+</ResponseField>
+
+<ResponseField name="password" type="string">
+  Senha do revendedor.
+</ResponseField>
+
+<ResponseField name="is_master" type="number">
+  Define se o revendedor é master (1) ou não (0).
+</ResponseField>
+
+<ResponseField name="credits" type="string">
+  Créditos disponíveis para o revendedor.
+</ResponseField>
+
+<ResponseField name="country" type="string">
+  País de origem do revendedor.
+</ResponseField>
+
+<ResponseField name="whatsapp" type="string">
+  Número de WhatsApp associado.
+</ResponseField>
+
+<ResponseField name="recharge" type="string">
+  Data da última recarga.
+</ResponseField>
+
+<ResponseField name="status" type="number">
+  Status da conta (1 para ativo).
+</ResponseField>
+
+<ResponseField name="language" type="string">
+  Idioma configurado para o revendedor.
+</ResponseField>
+</Expandable>
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+  "id": 136,
+  "username": "",
+  "password": "",
+  "is_master": 0,
+  "credits": "10",
+  "country": "Brasil",
+  "whatsapp": "12312312312",
+  "telegram": null,
+  "master": 80,
+  "recharge": "1/16/2025, 12:32:13 PM",
+  "status": 1,
+  "is_admin": 0,
+  "language": "pt",
+  "createdAt": "2025-01-16T15:32:13.611Z",
+  "updatedAt": "2025-01-16T15:32:13.611Z",
+  "token": null,
+  "notes": null,
+  "trash": 0,
+  "active_tree": 0,
+  "block_reseller": 0
+}
+```
+</ResponseExample>

@@ -1,0 +1,110 @@
+---
+title: "Editar Cliente"
+sidebarTitle: "Editar Cliente"
+api: "PATCH https://mcapi.knewcms.com:2087/lines/{id}"
+authMethod: "authorization"
+description: "Este endpoint permite editar as informações de um cliente ativo na plataforma ."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint permite atualizar os dados de um cliente ativo, como nome de usuário, senha, contato e observações.
+
+### Headers obrigatórios
+
+<ParamField
+  header="Authorization"
+  type="string"
+  placeholder="Bearer {token}"
+  required
+>
+  O token de autenticação no formato Bearer é obrigatório para acessar este endpoint.
+</ParamField>
+
+### Parâmetros da URL
+
+<ParamField path="id" type="string" placeholder="505" required>
+  ID do cliente a ser editado. Esse parâmetro deve ser informado diretamente na URL.
+</ParamField>
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="password" type="string" placeholder="123456" required>
+  Nova senha do cliente. 
+</ParamField>
+
+<ParamField body="whatsapp" type="string" placeholder="(12) 3 1231-2312" required>
+  Número de WhatsApp do cliente. 
+</ParamField>
+
+<ParamField body="country" type="string" placeholder="Brasil" required>
+  País de origem do cliente. 
+</ParamField>
+
+<ParamField body="notes" type="string" placeholder="Observações">
+  Observações adicionais sobre o cliente. Campo opcional.
+</ParamField>
+
+### Exemplo de Requisição
+
+```json
+PATCH https://mcapi.knewcms.com:2087/lines/505
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+  "password": "nova_senha",
+  "whatsapp": "(11) 9 8765-4321",
+  "country": "Brasil",
+  "notes": "Atualização de dados do cliente"
+}
+```
+
+### Resposta
+
+<ResponseField name="status" type="number">
+  Indica o código HTTP da resposta. Esperado: 200 (OK).
+</ResponseField>
+
+<ResponseField name="response" type="object">
+Conteúdo da resposta.
+
+<Expandable title="Mostrar objeto">
+<ResponseField name="id" type="number">
+  Identificador único do cliente.
+</ResponseField>
+
+<ResponseField name="password" type="string">
+  Senha do cliente.
+</ResponseField>
+
+<ResponseField name="whatsapp" type="string">
+  Número de WhatsApp associado ao cliente.
+</ResponseField>
+
+<ResponseField name="country" type="string">
+  País de origem do cliente.
+</ResponseField>
+
+<ResponseField name="notes" type="string">
+  Observações adicionais sobre o cliente.
+</ResponseField>
+</Expandable>
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+  "id": 505,
+  "password": "nova_senha",
+  "whatsapp": "(11) 9 8765-4321",
+  "country": "Brasil",
+  "notes": "Atualização de dados do cliente"
+}
+```
+</ResponseExample>

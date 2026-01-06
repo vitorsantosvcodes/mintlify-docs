@@ -1,0 +1,179 @@
+---
+title: "Gerar Teste Krator"
+sidebarTitle: "Gerar Teste Krator"
+api: "POST https://mcapi.knewcms.com:2087/lines/krator/test"
+authMethod: "authorization"
+description: "Este endpoint permite gerar um teste Krator na plataforma."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint cria um **teste Krator** com credenciais temporárias para uso da plataforma.
+
+### Headers obrigatórios
+
+<ParamField
+  header="Authorization"
+  type="string"
+  placeholder="Bearer {token}"
+  required
+>
+  O token de autenticação no formato Bearer é obrigatório para acessar este endpoint.
+</ParamField>
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="notes" type="string" placeholder="Observações">
+  Observações adicionais sobre o teste Krator. Campo opcional.
+</ParamField>
+<ParamField body="package_p2p" type="string" placeholder="ID do pacote P2P" required>
+  ID do pacote P2P a ser utilizado no teste.
+</ParamField>
+<ParamField body="package_iptv" type="number" placeholder="ID do pacote IPTV" required>
+  ID do pacote IPTV a ser utilizado no teste.
+</ParamField>
+<ParamField body="testDuration" type="number" placeholder="Duração do teste (dias)" required>
+  Duração do teste em dias.
+</ParamField>
+<ParamField body="krator_package" type="string" placeholder="Pacote Krator" required>
+  Pacote Krator a ser utilizado no teste.
+</ParamField>
+<ParamField body="serviceId" type="string" placeholder="ID do serviço" required>
+  ID do serviço relacionado ao teste.
+</ParamField>
+
+### Exemplo de Requisição
+
+```json
+POST https://mcapi.knewcms.com:2087/lines/krator/test
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+    "notes": "",
+    "package_p2p": "64399dca5ea59e8a1de2b083",
+    "package_iptv": 97,
+    "testDuration": 1,
+    "krator_package": "1",
+    "serviceId": "672b26efd46f330001c0a590"
+}
+```
+
+### Resposta
+
+<ResponseField name="id_p2p" type="number">
+  ID do cliente P2P gerado (se aplicável).
+</ResponseField>
+<ResponseField name="id_iptv" type="number">
+  ID do cliente IPTV gerado (se aplicável).
+</ResponseField>
+<ResponseField name="username" type="string">
+  Nome de usuário gerado para o teste Krator.
+</ResponseField>
+<ResponseField name="password" type="string">
+  Senha temporária gerada para o teste Krator.
+</ResponseField>
+<ResponseField name="owner" type="number">
+  ID do proprietário responsável pelo teste.
+</ResponseField>
+<ResponseField name="exp_date" type="string">
+  Data de expiração do acesso do teste Krator.
+</ResponseField>
+<ResponseField name="notes" type="string">
+  Observações adicionais sobre o teste Krator.
+</ResponseField>
+<ResponseField name="status" type="number">
+  Status da conta (ex.: 1 para ativo, 0 para inativo).
+</ResponseField>
+<ResponseField name="is_trial" type="number">
+  Indica se a conta é de teste (1 para sim, 0 para não).
+</ResponseField>
+<ResponseField name="package_iptv" type="number">
+  ID do pacote IPTV utilizado.
+</ResponseField>
+<ResponseField name="package_one_stream" type="number">
+  ID do pacote One Stream utilizado.
+</ResponseField>
+<ResponseField name="package_p2p" type="string">
+  ID do pacote P2P utilizado.
+</ResponseField>
+<ResponseField name="error_iptv" type="number">
+  Código de erro do IPTV, se houver.
+</ResponseField>
+<ResponseField name="error_p2p" type="number">
+  Código de erro do P2P, se houver.
+</ResponseField>
+<ResponseField name="admin_id" type="number">
+  ID do administrador responsável.
+</ResponseField>
+<ResponseField name="country" type="string">
+  País de origem do teste Krator.
+</ResponseField>
+<ResponseField name="krator_package" type="string">
+  Pacote Krator utilizado.
+</ResponseField>
+<ResponseField name="custom_package" type="string">
+  Lista de IDs de pacotes customizados.
+</ResponseField>
+<ResponseField name="createdAt" type="string">
+  Data de criação do teste Krator.
+</ResponseField>
+<ResponseField name="updatedAt" type="string">
+  Data da última atualização do teste Krator.
+</ResponseField>
+<ResponseField name="max_connections" type="number">
+  Número máximo de conexões permitidas.
+</ResponseField>
+<ResponseField name="access_code" type="string">
+  Código de acesso gerado.
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+    "id_p2p": 0,
+    "id_iptv": 0,
+    "username": "66j17k4",
+    "password": "04j1r49",
+    "owner": 99999,
+    "exp_date": "2025-07-02T14:25:16.702Z",
+    "notes": "",
+    "status": 1,
+    "is_trial": 1,
+    "package_iptv": 97,
+    "package_one_stream": 133,
+    "package_p2p": "64399dca5ea59e8a1de2b083",
+    "error_iptv": 0,
+    "error_p2p": 0,
+    "admin_id": 1,
+    "country": "Brazil",
+    "krator_package": "1",
+    "custom_package": "[103,111,141,101,102,140,105,114,115,116,117,118,119,136,113,120,142,112,109,106,110,107,108,126,127,128,129,130,133,137,134,121,138,139,143,144,145,146,150]",
+    "createdAt": "2025-07-02T13:25:16.702Z",
+    "updatedAt": "2025-07-02T13:25:16.702Z",
+    "max_connections": 1,
+    "max_connections_nexus": null,
+    "plan": null,
+    "access_code": "z80wtucydo",
+    "p2p_active": null,
+    "warez2_active": null,
+    "id_warez": null,
+    "id_nexus": null,
+    "id_whot": null,
+    "migration_url": null,
+    "email": null,
+    "group_id": null,
+    "telegram": null,
+    "id": 102716781,
+    "id_one_stream": null,
+    "gift": 0,
+    "id_tvs_from": null,
+    "id_res_tvs_from": null
+}
+```
+</ResponseExample> 

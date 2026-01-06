@@ -1,0 +1,140 @@
+---
+title: "Atualizar Revendedor"
+sidebarTitle: "Atualizar Revendedor"
+api: "PATCH https://mcapi.knewcms.com:2087/users/{id}"
+authMethod: "authorization"
+description: "Este endpoint permite atualizar as informações de um revendedor na plataforma ."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint permite atualizar os dados de um revendedor existente.
+
+### Headers obrigatórios
+
+<ParamField
+  header="Authorization"
+  type="string"
+  placeholder="Bearer {token}"
+  required
+>
+  O token de autenticação no formato Bearer é obrigatório para acessar este endpoint.
+</ParamField>
+
+### Parâmetros da URL
+
+<ParamField path="id" type="string" placeholder="136" required>
+  ID do revendedor a ser atualizado. Esse parâmetro deve ser informado diretamente na URL.
+</ParamField>
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="username" type="string" placeholder="" required>
+  Novo nome de usuário do revendedor
+</ParamField>
+
+<ParamField body="password" type="string" placeholder="" required>
+  Nova senha do revendedor.
+</ParamField>
+
+<ParamField body="email" type="string" placeholder="exemplo@email.com">
+  Novo e-mail do revendedor. Campo opcional.
+</ParamField>
+
+<ParamField body="country" type="string" placeholder="Brasil" required>
+  País de origem do revendedor
+</ParamField>
+
+<ParamField body="whatsapp" type="string" placeholder="+55 12312312312" required>
+  Novo número de WhatsApp do revendedor.
+</ParamField>
+
+<ParamField body="telegram" type="string" placeholder="usuarioTelegram">
+  Novo usuário do Telegram do revendedor. Campo opcional.
+</ParamField>
+
+<ParamField body="notes" type="string" placeholder="Observações">
+  Observações adicionais sobre o revendedor. Campo opcional.
+</ParamField>
+
+### Exemplo de Requisição
+
+```json
+PATCH https://mcapi.knewcms.com:2087/users/136
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+  "username": "novo_usuario",
+  "password": "nova_senha",
+  "email": "novoemail@email.com",
+  "country": "Brasil",
+  "whatsapp": "+55 987654321",
+  "telegram": "novoTelegram",
+  "notes": "Atualização de informações do revendedor"
+}
+```
+
+### Resposta
+
+<ResponseField name="status" type="number">
+  Indica o código HTTP da resposta. Esperado: 200 (OK).
+</ResponseField>
+
+<ResponseField name="response" type="object">
+Conteúdo da resposta.
+
+<Expandable title="Mostrar objeto">
+<ResponseField name="id" type="number">
+  Identificador único do revendedor.
+</ResponseField>
+
+<ResponseField name="username" type="string">
+  Nome de usuário atualizado.
+</ResponseField>
+
+<ResponseField name="password" type="string">
+  Senha atualizada.
+</ResponseField>
+
+<ResponseField name="email" type="string">
+  E-mail atualizado.
+</ResponseField>
+
+<ResponseField name="country" type="string">
+  País de origem atualizado.
+</ResponseField>
+
+<ResponseField name="whatsapp" type="string">
+  Número de WhatsApp atualizado.
+</ResponseField>
+
+<ResponseField name="telegram" type="string">
+  Usuário do Telegram atualizado.
+</ResponseField>
+
+<ResponseField name="notes" type="string">
+  Observações atualizadas.
+</ResponseField>
+</Expandable>
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+  "id": 136,
+  "username": "novo_usuario",
+  "password": "nova_senha",
+  "email": "novoemail@email.com",
+  "country": "Brasil",
+  "whatsapp": "+55 987654321",
+  "telegram": "novoTelegram",
+  "notes": "Atualização de informações do revendedor"
+}
+```
+</ResponseExample>

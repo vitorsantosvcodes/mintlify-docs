@@ -1,0 +1,135 @@
+---
+title: "Gerar Cliente Teste"
+sidebarTitle: "Gerar Cliente Teste"
+api: "POST https://mcapi.knewcms.com:2087/lines/test"
+authMethod: "authorization"
+description: "Este endpoint permite gerar um cliente de teste na plataforma ."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint cria um **cliente teste** com credenciais temporárias para uso da plataforma.
+
+### Headers obrigatórios
+
+<ParamField
+  header="Authorization"
+  type="string"
+  placeholder="Bearer {token}"
+  required
+>
+  O token de autenticação no formato Bearer é obrigatório para acessar este
+  endpoint.
+</ParamField>
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="notes" type="string" placeholder="Observações">
+  Observações adicionais sobre o cliente teste. Campo opcional.
+</ParamField>
+
+
+
+### Exemplo de Requisição
+
+```json
+POST https://mcapi.knewcms.com:2087/lines/test
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+  "notes": "Cliente teste para avaliação",
+  "krator_package": "1",
+  "package_p2p": "647fc3ce3537090f240bc36b",
+  "package_iptv": 30,
+  "testDuration": 1
+}
+```
+
+### Resposta
+
+<ResponseField name="status" type="number">
+  Indica o código HTTP da resposta. Esperado: 201 (Created).
+</ResponseField>
+
+<ResponseField name="code" type="string">
+  O código de status da resposta.
+</ResponseField>
+
+<ResponseField name="response" type="object">
+Conteúdo da resposta.
+
+<Expandable title="Mostrar objeto">
+<ResponseField name="id" type="number">
+  Identificador único do cliente teste gerado.
+</ResponseField>
+
+<ResponseField name="username" type="string">
+  Nome de usuário gerado para o cliente.
+</ResponseField>
+
+<ResponseField name="password" type="string">
+  Senha temporária gerada para o cliente.
+</ResponseField>
+
+<ResponseField name="owner" type="number">
+  ID do proprietário responsável pelo cliente.
+</ResponseField>
+
+<ResponseField name="expDate" type="string">
+  Data de expiração do acesso do cliente teste.
+</ResponseField>
+
+<ResponseField name="notes" type="string">
+  Observações adicionais sobre o cliente teste.
+</ResponseField>
+
+<ResponseField name="status" type="number">
+  Status da conta (ex.: 1 para ativo, 0 para inativo).
+</ResponseField>
+
+<ResponseField name="isTrial" type="number">
+  Indica se a conta é de teste (1 para sim, 0 para não).
+</ResponseField>
+
+<ResponseField name="country" type="string">
+  País de origem do cliente teste.
+</ResponseField>
+
+<ResponseField name="createdAt" type="string">
+  Data de criação do cliente teste.
+</ResponseField>
+
+<ResponseField name="updatedAt" type="string">
+  Data da última atualização do cliente teste.
+</ResponseField>
+</Expandable>
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+  "id": 1201,
+  "username": "cliente_teste01",
+  "password": "senha1234",
+  "owner": 45,
+  "expDate": "2025-01-18T15:00:00.000Z",
+  "notes": "Conta de avaliação",
+  "status": 1,
+  "isTrial": 1,
+  "country": "Brazil",
+  "createdAt": "2025-01-16T13:00:00.000Z",
+  "updatedAt": "2025-01-16T13:00:00.000Z",
+  "whatsapp": null,
+  "telegram": null,
+  "migrationUrl": null,
+  "trash": 0,
+  "updated": 0
+}
+```
+</ResponseExample>

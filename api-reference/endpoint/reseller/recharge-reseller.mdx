@@ -1,0 +1,96 @@
+---
+title: "Recarga de Créditos para Revendedor"
+sidebarTitle: "Recarga de Créditos"
+api: "PATCH https://mcapi.knewcms.com:2087/users/credits/{id}"
+authMethod: "authorization"
+description: "Este endpoint permite adicionar créditos a um revendedor na plataforma ."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint permite realizar a recarga de créditos para um revendedor ativo na plataforma.
+
+### Headers obrigatórios
+
+<ParamField
+  header="Authorization"
+  type="string"
+  placeholder="Bearer {token}"
+  required
+>
+  O token de autenticação no formato Bearer é obrigatório para acessar este endpoint.
+</ParamField>
+
+### Parâmetros da URL
+
+<ParamField path="id" type="string" placeholder="136" required>
+  ID do revendedor que receberá a recarga. Esse parâmetro deve ser informado diretamente na URL.
+</ParamField>
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="credits" type="number" placeholder="10" required>
+  Quantidade de créditos a ser adicionada ao revendedor.
+</ParamField>
+
+<ParamField body="notes" type="string" placeholder="Observações">
+  Observações adicionais sobre a recarga. Campo opcional.
+</ParamField>
+
+### Exemplo de Requisição
+
+```json
+PATCH https://mcapi.knewcms.com:2087/users/credits/136
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+  "credits": 10,
+  "notes": "Recarga mensal de créditos"
+}
+```
+
+### Resposta
+
+<ResponseField name="status" type="number">
+  Indica o código HTTP da resposta. Esperado: 200 (OK).
+</ResponseField>
+
+<ResponseField name="response" type="object">
+Conteúdo da resposta.
+
+<Expandable title="Mostrar objeto">
+<ResponseField name="id" type="number">
+  Identificador único do revendedor.
+</ResponseField>
+
+<ResponseField name="username" type="string">
+  Nome de usuário do revendedor.
+</ResponseField>
+
+<ResponseField name="credits" type="number">
+  Quantidade total de créditos após a recarga.
+</ResponseField>
+
+<ResponseField name="recharge" type="string">
+  Data e hora da recarga.
+</ResponseField>
+</Expandable>
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+  "id": 136,
+  "username": "revendedor123",
+  "credits": 50,
+  "recharge": "2025-01-16T16:45:00.000Z",
+  "message": "Créditos adicionados com sucesso."
+}
+```
+</ResponseExample>

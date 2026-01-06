@@ -1,0 +1,57 @@
+---
+title: "Gerar Token Fixo"
+sidebarTitle: "Gerar Token Fixo"
+api: "POST https://mcapi.knewcms.com:2087/auth/static-token"
+authMethod: "none"
+description: "Este endpoint permite gerar um token fixo de autenticação para acessar a API da plataforma ."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint gera um token fixo de autenticação para a conta de usuário informada.
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="username" type="string" placeholder="seu_usuario" required>
+  Nome de usuário da conta.
+</ParamField>
+
+<ParamField body="password" type="string" placeholder="sua_senha" required>
+  Senha da conta.
+</ParamField>
+
+### Exemplo de Requisição
+
+```json
+POST https://mcapi.knewcms.com:2087/auth/static-token
+Headers:
+{
+  "Content-Type": "application/json"
+}
+Payload:
+{
+  "username": "seu_usuario",
+  "password": "sua_senha"
+}
+```
+
+### Resposta
+
+<ResponseField name="status" type="number">
+  Indica o código HTTP da resposta. Esperado: 200 (OK).
+</ResponseField>
+
+<ResponseField name="token" type="string">
+  Token fixo gerado para autenticação.
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+  "status": 200,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNldV91c3VhcmlvIiwiaWF0IjoxNjc0MzY1MTY2fQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+}
+```
+</ResponseExample>

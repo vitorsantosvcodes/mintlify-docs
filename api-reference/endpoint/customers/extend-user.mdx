@@ -1,0 +1,268 @@
+---
+title: "Estender Usuário"
+sidebarTitle: "Estender Usuário"
+api: "PATCH https://mcapi.knewcms.com:2087/lines/extend/{id}"
+authMethod: "authorization"
+description: "Este endpoint permite estender o tempo de um usuário existente na plataforma."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint estende o tempo de um **usuário** já existente, adicionando créditos ao mesmo.
+
+### Headers obrigatórios
+
+<ParamField
+  header="Authorization"
+  type="string"
+  placeholder="Bearer {token}"
+  required
+>
+  O token de autenticação no formato Bearer é obrigatório para acessar este endpoint.
+</ParamField>
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="credits" type="number" placeholder="Quantidade de créditos" required>
+  Quantidade de créditos a serem adicionados ao usuário.
+</ParamField>
+
+### Exemplo de Requisição
+
+```json
+POST https://mcapi.knewcms.com:2087/lines/extend/{id}
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+    "credits": 1
+}
+```
+
+### Resposta
+
+<ResponseField name="id" type="number">
+  ID do usuário.
+</ResponseField>
+<ResponseField name="id_p2p" type="number">
+  ID do cliente P2P.
+</ResponseField>
+<ResponseField name="id_iptv" type="number">
+  ID do cliente IPTV.
+</ResponseField>
+<ResponseField name="access_code" type="string">
+  Código de acesso (se aplicável).
+</ResponseField>
+<ResponseField name="id_one_stream" type="string">
+  ID do pacote One Stream.
+</ResponseField>
+<ResponseField name="username" type="string">
+  Nome de usuário.
+</ResponseField>
+<ResponseField name="password" type="string">
+  Senha do usuário.
+</ResponseField>
+<ResponseField name="owner" type="number">
+  ID do proprietário.
+</ResponseField>
+<ResponseField name="exp_date" type="string">
+  Data de expiração do usuário.
+</ResponseField>
+<ResponseField name="gift" type="number">
+  Indica se é um presente (0 para não, 1 para sim).
+</ResponseField>
+<ResponseField name="notes" type="string">
+  Observações adicionais.
+</ResponseField>
+<ResponseField name="status" type="number">
+  Status da conta (ex.: 1 para ativo, 0 para inativo).
+</ResponseField>
+<ResponseField name="is_trial" type="number">
+  Indica se a conta é de teste (1 para sim, 0 para não).
+</ResponseField>
+<ResponseField name="last_trust" type="string">
+  Última confiança (se aplicável).
+</ResponseField>
+<ResponseField name="whatsapp" type="string">
+  WhatsApp do usuário.
+</ResponseField>
+<ResponseField name="package_iptv" type="number">
+  ID do pacote IPTV.
+</ResponseField>
+<ResponseField name="package_one_stream" type="number">
+  ID do pacote One Stream.
+</ResponseField>
+<ResponseField name="package_p2p" type="string">
+  ID do pacote P2P.
+</ResponseField>
+<ResponseField name="error_iptv" type="number">
+  Código de erro do IPTV, se houver.
+</ResponseField>
+<ResponseField name="error_p2p" type="number">
+  Código de erro do P2P, se houver.
+</ResponseField>
+<ResponseField name="admin_id" type="number">
+  ID do administrador responsável.
+</ResponseField>
+<ResponseField name="trash" type="number">
+  Indica se está na lixeira (0 para não, 1 para sim).
+</ResponseField>
+<ResponseField name="country" type="string">
+  País do usuário.
+</ResponseField>
+<ResponseField name="product" type="string">
+  Produto associado ao usuário.
+</ResponseField>
+<ResponseField name="iptv_active" type="number">
+  Indica se o IPTV está ativo (1 para sim, 0 para não).
+</ResponseField>
+<ResponseField name="p2p_active" type="number">
+  Indica se o P2P está ativo (1 para sim, 0 para não).
+</ResponseField>
+<ResponseField name="warez2_active" type="number">
+  Indica se o Warez2 está ativo (1 para sim, 0 para não).
+</ResponseField>
+<ResponseField name="error_warez" type="number">
+  Código de erro do Warez, se houver.
+</ResponseField>
+<ResponseField name="id_warez" type="number">
+  ID do Warez.
+</ResponseField>
+<ResponseField name="id_nexus" type="string">
+  ID do Nexus.
+</ResponseField>
+<ResponseField name="id_whot" type="string">
+  ID do Whot.
+</ResponseField>
+<ResponseField name="updated" type="number">
+  Indica se foi atualizado (0 para não, 1 para sim).
+</ResponseField>
+<ResponseField name="krator_package" type="number">
+  Pacote Krator utilizado.
+</ResponseField>
+<ResponseField name="migration_url" type="string">
+  URL de migração (se aplicável).
+</ResponseField>
+<ResponseField name="custom_package" type="string">
+  Lista de IDs de pacotes customizados.
+</ResponseField>
+<ResponseField name="id_tvs_from" type="string">
+  ID TVs From.
+</ResponseField>
+<ResponseField name="id_res_tvs_from" type="string">
+  ID Res TVs From.
+</ResponseField>
+<ResponseField name="createdAt" type="string">
+  Data de criação do usuário.
+</ResponseField>
+<ResponseField name="updatedAt" type="string">
+  Data da última atualização do usuário.
+</ResponseField>
+<ResponseField name="email" type="string">
+  E-mail do usuário.
+</ResponseField>
+<ResponseField name="group_id" type="string">
+  ID do grupo do usuário.
+</ResponseField>
+<ResponseField name="max_connections" type="number">
+  Número máximo de conexões permitidas.
+</ResponseField>
+<ResponseField name="max_connections_nexus" type="number">
+  Número máximo de conexões Nexus.
+</ResponseField>
+<ResponseField name="telegram" type="string">
+  Telegram do usuário.
+</ResponseField>
+<ResponseField name="plan" type="object">
+  Plano associado ao usuário.
+</ResponseField>
+<ResponseField name="addons" type="array">
+  Lista de addons do usuário.
+</ResponseField>
+{/* Adicione outros campos conforme necessário */}
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+    "id": 12345678,
+    "id_p2p": 12345678,
+    "id_iptv": 0,
+    "access_code": null,
+    "id_one_stream": "c93f1fc3-a99a-450e-987e-cf4c95ce3e38",
+    "username": "12345678",
+    "password": "12345678",
+    "owner": 99999,
+    "exp_date": "2025-01-01T02:00:00.946Z",
+    "gift": 0,
+    "notes": "",
+    "status": 1,
+    "is_trial": 0,
+    "last_trust": null,
+    "whatsapp": "",
+    "package_iptv": 30,
+    "package_one_stream": 101,
+    "package_p2p": "64399dca5ea59e8a1de2b083",
+    "error_iptv": 0,
+    "error_p2p": 0,
+    "admin_id": 1,
+    "trash": 0,
+    "country": "Brasil",
+    "product": "ORIGINAL",
+    "iptv_active": 1,
+    "p2p_active": 1,
+    "warez2_active": 1,
+    "error_warez": 0,
+    "id_warez": 0,
+    "id_nexus": null,
+    "id_whot": null,
+    "updated": 0,
+    "krator_package": 1,
+    "migration_url": null,
+    "custom_package": "[103,111,141,101,102,140,104,143,144,145,146]",
+    "id_tvs_from": null,
+    "id_res_tvs_from": null,
+    "createdAt": "2001-01-01:42:18.954Z",
+    "updatedAt": "2001-01-01:42:18.954Z",
+    "email": "",
+    "group_id": null,
+    "max_connections": 1,
+    "max_connections_nexus": null,
+    "telegram": null,
+    "plan": {
+        "id": 2,
+        "name": "Essencial 2 IPTV + 1 P2P",
+        "description": "Este é o plano essencial Wplay. Ele já dá direito a 2 telas IPTV e 1 P2P.",
+        "credits": "1.00",
+        "days": 30,
+        "status": 1,
+        "type": "plan",
+        "productStreamings": [
+            {
+                "id": 5,
+                "quantity": 1,
+                "maxConnections": 2,
+                "streamingSystem": {
+                    "id": 2,
+                    "name": "IPTV"
+                }
+            },
+            {
+                "id": 6,
+                "quantity": 1,
+                "maxConnections": 1,
+                "streamingSystem": {
+                    "id": 3,
+                    "name": "P2P"
+                }
+            }
+        ]
+    },
+    "addons": []
+}
+```
+</ResponseExample> 

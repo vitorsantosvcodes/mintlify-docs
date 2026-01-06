@@ -1,0 +1,28 @@
+---
+title: "Deletar Revendedor"
+sidebarTitle: "Deletar Revendedor"
+api: "DELETE https://mcapi.knewcms.com:2087/users/{id}"
+authMethod: "authorization"
+description: "Este endpoint permite deletar um revendedor"
+---
+
+### Resposta
+
+<ResponseField name="status" type="number">
+  Indica o código HTTP da resposta. Esperado: 200 (OK) ou 204 (No Content).
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Mensagem de confirmação da exclusão.
+</ResponseField>
+
+### Exemplo de Resposta
+
+<ResponseExample>
+```json
+{
+  "status": 200,
+  "message": "Revendedor deletado com sucesso."
+}
+```
+</ResponseExample>

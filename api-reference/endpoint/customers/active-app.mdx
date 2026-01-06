@@ -1,0 +1,69 @@
+---
+title: "Ativar app"
+sidebarTitle: "Ativar app"
+api: "POST https://mcapi.knewcms.com:2087/lines/active/app"
+authMethod: "authorization"
+description: "Este endpoint permite ativar aplicativos."
+---
+
+## Como utilizar este endpoint?
+
+Esse endpoint ativa varios aplicativos dentro da plataforma .
+
+### Headers obrigatórios
+
+<ParamField
+    header="Authorization"
+    type="string"
+    placeholder="Bearer {token}"
+    required
+>
+    O token de autenticação no formato Bearer é obrigatório para acessar este
+    endpoint.
+</ParamField>
+
+### Exemplo de Requisição
+
+```json
+POST https://mcapi.knewcms.com:2087/lines/active/app
+Headers:
+{
+  "Authorization": "Bearer seu_token_aqui",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+    "nameApp": "Kplay",
+    "mac": "12:12:12:12:12",
+    "namePlaylist": "test",
+    "id_user": 102313925
+}
+```
+
+### Parâmetros do corpo da requisição (Payload)
+
+<ParamField body="nameApp" type="string" placeholder="123456" required>
+    Nome do aplicativo a ser ativado. OPções disponíveis:
+    BrasilIPTV, EasyPlayer, IPTVPlus, IPTVNextPlayer, IPTVPlayerio,
+    IPTVProPlayer, IPTVStarPlayer, IPlayer, OttPlayer, TVVision, TiviPlayerIPTV, IPTV4K
+</ParamField>
+
+<ParamField body="mac" type="string" placeholder="12:12:12:12:12" required>
+    Mac do cliente
+</ParamField>
+
+<ParamField body="namePlaylist" type="string" placeholder="teste" required>
+    Nome da playlist a ser ativada.
+</ParamField>
+
+<ParamField body="id_user" type="number" placeholder="12333" required>
+    Id do cliente a ser ativado.
+</ParamField>
+
+<ResponseExample>
+    ```json
+    {
+        "success": true
+    }
+    ```
+</ResponseExample>

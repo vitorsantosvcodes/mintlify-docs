@@ -1,0 +1,80 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Documentação",
+  "api": {
+    "auth": {
+      "method": "key",
+      "name": "Authorization"
+    },
+    "playground": {
+      "mode": "show"
+    }
+  },
+  "favicon": "",
+  "colors": {
+    "primary": "#07A85D",
+    "light": "#07A85D",
+    "dark": "#07A85D",
+    "anchors": {
+      "from": "#07A85D",
+      "to": "#07A85D"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "API Reference",
+      "url": "/api-reference"
+    }
+  ],
+  "tabs": [
+    {
+      "name": "Documentação",
+      "url": "/guia/comece-aqui"
+    },
+    {
+      "name": "API Reference",
+      "url": "/api-reference"
+    }
+  ],
+  "anchors": [],
+  "navigation": [
+    {
+      "group": "Comece por aqui",
+      "pages": [
+        "guia/comece-aqui",
+        "guia/autenticacao",
+        "guia/codigo-http-das-resposta",
+        "guia/limites-da-api"
+      ]
+    },
+    {
+      "group": "Auth",
+      "pages": ["api-reference/endpoint/auth/generate-token"]
+    },
+    {
+      "group": "Clientes",
+      "pages": [
+        "api-reference/endpoint/customers/generate-test",
+        "api-reference/endpoint/customers/edit-user",
+        "api-reference/endpoint/customers/create-user",
+        "api-reference/endpoint/customers/recreate-user",
+        "api-reference/endpoint/customers/active-test",
+        "api-reference/endpoint/customers/delete-client",
+        "api-reference/endpoint/customers/active-app",
+        "api-reference/endpoint/customers/active-new-app",
+        "api-reference/endpoint/customers/generate-test-nexus",
+        "api-reference/endpoint/customers/generate-test-krator",
+        "api-reference/endpoint/customers/extend-user"
+      ]
+    },
+    {
+      "group": "Revendedores",
+      "pages": [
+        "api-reference/endpoint/reseller/create-reseller",
+        "api-reference/endpoint/reseller/recharge-reseller",
+        "api-reference/endpoint/reseller/update-reseller",
+        "api-reference/endpoint/reseller/delete-reseller"
+      ]
+    }
+  ]
+}
