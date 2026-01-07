@@ -1,0 +1,63 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Documentação",
+  "colors": {
+    "primary": "#07A85D",
+    "light": "#07A85D",
+    "dark": "#07A85D"
+  },
+  "favicon": "",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Comece por aqui",
+        "pages": [
+          "guia/comece-aqui",
+          "guia/autenticacao",
+          "guia/codigo-http-das-resposta",
+          "guia/limites-da-api"
+        ]
+      },
+      {
+        "group": "Auth",
+        "pages": [
+          "api-reference/endpoint/auth/generate-token"
+        ]
+      },
+      {
+        "group": "Clientes",
+        "pages": [
+          "api-reference/endpoint/customers/generate-test",
+          "api-reference/endpoint/customers/edit-user",
+          "api-reference/endpoint/customers/create-user",
+          "api-reference/endpoint/customers/recreate-user",
+          "api-reference/endpoint/customers/active-test",
+          "api-reference/endpoint/customers/delete-client",
+          "api-reference/endpoint/customers/active-app",
+          "api-reference/endpoint/customers/active-new-app",
+          "api-reference/endpoint/customers/generate-test-nexus",
+          "api-reference/endpoint/customers/generate-test-krator",
+          "api-reference/endpoint/customers/extend-user"
+        ]
+      },
+      {
+        "group": "Revendedores",
+        "pages": [
+          "api-reference/endpoint/reseller/create-reseller",
+          "api-reference/endpoint/reseller/recharge-reseller",
+          "api-reference/endpoint/reseller/update-reseller",
+          "api-reference/endpoint/reseller/delete-reseller"
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "API Reference",
+        "href": "/api-reference"
+      }
+    ]
+  }
+}
